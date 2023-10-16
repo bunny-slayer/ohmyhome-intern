@@ -5,7 +5,6 @@ import Cards from '@/components/Cards';
 import Header from '@/components/Header';
 import Homecard from '@/components/Homecard';
 import LoadMoreButton from '@/components/Loadmore';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Homepage = () => {
   const [data, setData] = useState([]);
@@ -14,7 +13,7 @@ const Homepage = () => {
 
   useEffect(() => {
     fetchData(0, visibleItems);
-  }, []);
+  }, []); // Only run this effect on initial render
 
   const fetchData = async (offset: number, limit: number) => {
     const response = await fetch(
@@ -23,7 +22,7 @@ const Homepage = () => {
     const result = await response.json();
 
     if (result && result.list) {
-      setData(result.list);
+      setData((prevData) => [...prevData, ...result.list]);
       setTotalProperties(result.totalProperties);
     }
   };
