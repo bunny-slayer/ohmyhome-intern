@@ -17,6 +17,8 @@ export async function fetchData(queryParameters: QueryParameters): Promise<Axios
         const response = await axios.get<ApiResponse>(`${apiUrl}/endpoint`, {
             params: queryParameters,
         });
+
+        console.log(response);
         return response;
     } catch (error) {
         throw error;

@@ -3,7 +3,7 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-      domains: ['api.omh.app'],
+      domains: ['picture.omh.app','api.omh.app'],
     },
   }
 

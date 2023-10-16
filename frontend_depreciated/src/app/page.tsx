@@ -1,37 +1,54 @@
+"use client"
+
+import { useEffect, useState } from 'react';
 import Cards from '@/components/Cards';
 import Header from '@/components/Header';
 import Homecard from '@/components/Homecard';
 import LoadMoreButton from '@/components/Loadmore';
 
 export default function Home() {
-  // Your single data object
-  const singleData = {
-    title: 'Sample Title',
-    description: 'Sample Description',
-    price: 1000,
-    imageurl: 'https://api.omh.app/store/picture/2db5d27a-f29f-44ad-89a2-34201360cd6e',
-  };
+  // Initialize the data state
+  const [data, setData] = useState([]);
 
-  // Create an array with 10 copies of the single data
-  const dataArray = new Array(10).fill(singleData);
+  // Use useEffect to fetch data when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      // Define your limit and offset values
+      const limit = 10; // The number of items you want to retrieve
+      const offset = 0; // The starting index in the list
+
+      // Fetch data from your API
+      const response = await fetch(
+        `https://m9ojazlunf.execute-api.ap-southeast-1.amazonaws.com/test?limit=${limit}&offset=${offset}`
+      );
+
+      const result = await response.json();
+
+      if (result && result.list) {
+        setData(result.list);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
-        <Header />
-        <div className="p-8 lg:p-24 xl:p-32">
+      <Header />
+      <div className="p-8 lg:p-24 xl:p-32">
         <Cards>
-            {dataArray.map((data, index) => (
+          {data.map((item, index) => (
             <Homecard
-                key={index}
-                title={data.title}
-                description={data.description}
-                price={data.price}
-                imageurl={data.imageurl}
+              key={index}
+              title={item.title}
+              description={item.description}
+              price={item.price}
+              imageurl={item.imageurl}
             />
-            ))}
+          ))}
         </Cards>
         <LoadMoreButton />
-        </div>
+      </div>
     </div>
   );
 }
