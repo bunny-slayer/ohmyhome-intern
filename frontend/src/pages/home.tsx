@@ -6,11 +6,20 @@ import Header from '@/components/Header';
 import Homecard from '@/components/Homecard';
 import LoadMoreButton from '@/components/Loadmore';
 
+interface Listing {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  imageurl: string;
+  type: number;
+}
+
 const Homepage = () => {
-  const [data, setData] = useState([]);
-  const [visibleItems, setVisibleItems] = useState(10); // Initial number of items to display
-  const [totalProperties, setTotalProperties] = useState(0);
-  const [loading, setLoading] = useState(false); // For indicating loading state
+  const [data, setData] = useState<Listing[]>([]); // Provide type for data
+  const [visibleItems, setVisibleItems] = useState<number>(10); // Provide type for visibleItems
+  const [totalProperties, setTotalProperties] = useState<number>(0); // Provide type for totalProperties
+  const [loading, setLoading] = useState<boolean>(false); // Provide type for loading
 
   useEffect(() => {
     fetchData(0, visibleItems);
