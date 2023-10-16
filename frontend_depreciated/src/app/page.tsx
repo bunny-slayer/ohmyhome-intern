@@ -6,7 +6,7 @@ export default function Home() {
   const singleData = {
       title: 'Sample Title',
       description: 'Sample Description',
-      price: 100,
+      price: 1000,
       imageurl: 'https://api.omh.app/store/picture/2db5d27a-f29f-44ad-89a2-34201360cd6e',
   };
 
@@ -14,7 +14,7 @@ export default function Home() {
   const dataArray = new Array(10).fill(singleData);
 
   return (
-      <div className = "p-8">
+      <div className = "p-8 lg:p-48">
           <Cards>
               {dataArray.map((data, index) => (
                   <Homecard

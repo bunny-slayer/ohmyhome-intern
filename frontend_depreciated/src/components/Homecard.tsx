@@ -7,25 +7,30 @@ interface HomecardProps {
 
 import Image from 'next/image';
 
-const Homecard = ({ title, description, imageurl }: HomecardProps) => {
+const Homecard = ({ title, description, imageurl, price }: HomecardProps) => {
     return (
-        <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-                <div className="h-full w-full relative">
-                    <Image
-                        src={imageurl}
-                        alt={title}
-                        width = {100}
-                        height = {100}
-                    />
+        <div className="mb-32 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">
+            <div className="w-full relative">
+                <Image
+                    src={imageurl}
+                    alt={title}
+                    width={500}
+                    height={500}
+                    className='rounded-xl'
+                />
             </div>
-            <h2 className="mb-3 text-2xl font-semibold">
+            <h2 className="mt-6 text-2xl font-semibold text-left">
                 {title}
             </h2>
-            <p className="m-0 max-w-[30ch] text-sm opacity-50">
+            <p className="mt-4 max-w-[30ch] text-sm opacity-50 text-left">
                 {description}
+            </p>
+            <p className ="mt-2">
+                {price}
             </p>
         </div>
     );
 }
 
 export default Homecard;
+
