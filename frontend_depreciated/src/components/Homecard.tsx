@@ -19,7 +19,7 @@ const Homecard = ({ title, description, imageurl, price }: HomecardProps) => {
                     alt={title}
                     width={500}
                     height={300}
-                    className='rounded-xl'
+                    className='rounded-xl object-cover h-60'
                 />
             </div>
             <h2 className="mt-4 lg:mt-6 text-2xl font-semibold text-left">
