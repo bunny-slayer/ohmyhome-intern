@@ -12,14 +12,14 @@ const Homecard = ({ title, description, imageurl, price }: HomecardProps) => {
     const formattedPrice = price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
     return (
-        <div className="mt-12 lg:mt-2 mb-4 lg:mb-16 text-center lg:max-w-5xl lg:w-full lg:text-left">
+        <div className="mb-4 lg:mb-16 text-center lg:max-w-5xl lg:w-full lg:text-left">
             <div className="w-full relative">
                 <Image
                     src={imageurl}
                     alt={title}
                     width={500}
                     height={300}
-                    className='rounded-xl object-cover h-60'
+                    className='rounded-xl object-cover h-60 lg:h-40'
                 />
             </div>
             <h2 className="mt-4 lg:mt-6 text-2xl font-semibold text-left">
